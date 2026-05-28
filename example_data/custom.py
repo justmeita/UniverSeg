@@ -33,7 +33,7 @@ def load_folder(path: pathlib.Path, size: Tuple[int, int] = (128, 128)):
         img = process_img(file, size=size)
         seg_file = file.with_suffix(".png")
         seg = process_seg(seg_file, size=size)
-        data.append((img / 255.0, seg))
+        data.append((img / 255.0, seg / 255.0))
     return data
 
 
