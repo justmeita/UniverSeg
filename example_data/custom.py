@@ -60,7 +60,7 @@ class CUSTOMDataset(Dataset):
 
     def __post_init__(self):
         root = require_download_custom()
-        path = root / {"Pancreas": "Task002_Pancreas"}[self.dataset]
+        path = root / {"Pancreas": "Pancreas"}[self.dataset]
         T = torch.from_numpy
         self._data = [(T(x)[None], T(y)) for x, y in load_folder(path)]
         if self.label is not None:
