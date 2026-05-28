@@ -22,7 +22,7 @@ def process_seg(path: pathlib.Path, size: Tuple[int, int]):
     seg = PIL.Image.open(path)
     seg = seg.resize(size, resample=PIL.Image.NEAREST)
     seg = np.array(seg)
-    seg = np.stack([seg == 0, seg == 128, seg == 255])
+    seg = np.stack([seg == 0, seg == 255])
     seg = seg.astype(np.float32)
     return seg
 
@@ -33,7 +33,7 @@ def load_folder(path: pathlib.Path, size: Tuple[int, int] = (128, 128)):
         img = process_img(file, size=size)
         seg_file = file.with_suffix(".png")
         seg = process_seg(seg_file, size=size)
-        data.append((img / 255.0, seg / 255.0))
+        data.append((img / 255.0, seg))
     return data
 
 
