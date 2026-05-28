@@ -38,10 +38,10 @@ def load_folder(path: pathlib.Path, size: Tuple[int, int] = (128, 128)):
 
 
 def require_download_custom():
-    dest_folder = pathlib.Path("/tmp/universeg_wbc/")
+    dest_folder = pathlib.Path("/tmp/universeg_custom/")
 
     if not dest_folder.exists():
-        repo_url = "https://github.com/zxaoyou/segmentation_WBC.git"
+        repo_url = "https://github.com/justmeita/Universeg_custom_dataset.git"
         subprocess.run(
             ["git", "clone", repo_url, str(dest_folder),],
             stderr=subprocess.DEVNULL,
