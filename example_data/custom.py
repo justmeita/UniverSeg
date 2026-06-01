@@ -53,14 +53,14 @@ def require_download_custom():
 
 @dataclass
 class CUSTOMDataset(Dataset):
-    dataset: Literal["Pancreas"]
+    dataset: Literal["Pancreas", "Pancreas Max"]
     split: Literal["support", "test"]
     label: Optional[Literal["pancreas", "background"]] = None
     support_frac: float = 0.7
 
     def __post_init__(self):
         root = require_download_custom()
-        path = root / {"Pancreas": "Pancreas"}[self.dataset]
+        path = root / {"Pancreas": "Pancreas", "Pancreas Max" : "Pancreas Max"}[self.dataset]
         T = torch.from_numpy
         self._data = [(T(x)[None], T(y)) for x, y in load_folder(path)]
         if self.label is not None:
